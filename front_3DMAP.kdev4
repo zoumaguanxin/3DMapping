@@ -1,0 +1,4 @@
+[Project]
+Name=front_3DMAP
+Manager=KDevCMakeManager
+VersionControl=kdevgit
