@@ -1,0 +1,75 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00D\x00M\x00A\x00P)
+
+[CMake]
+Build Directory Count=1
+Current Build Directory Index=0
+ProjectRootRelative=./
+
+[CMake][CMake Build Directory 0]
+Build Directory Path=file:///home/shaoan/projects/front_3DMAP/build
+Build Type=Debug
+CMake Binary=file:///usr/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=file:///usr/local
+
+[Launch]
+Launch Configurations=Launch Configuration 0,Launch Configuration 1,Launch Configuration 2
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=front_3dmap
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00D\x00M\x00A\x00P\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00d\x00m\x00a\x00p)
+Dependency Action=Build
+EnvironmentGroup=default
+Executable=file:///home/shaoan/projects/front_3DMAP/
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=front_3DMAP,front_3dmap
+Use External Terminal=false
+Working Directory=
+isExecutable=false
+
+[Launch][Launch Configuration 1]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=posegraph
+Type=Native Application
+
+[Launch][Launch Configuration 1][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00D\x00M\x00A\x00P\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00d\x00m\x00a\x00p)
+Dependency Action=Build
+EnvironmentGroup=default
+Executable=file:///home/shaoan/projects/front_3DMAP/
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=front_3DMAP,pose_graph
+Use External Terminal=false
+Working Directory=
+isExecutable=false
+
+[Launch][Launch Configuration 2]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=vizoptimizedpointcloud
+Type=Native Application
+
+[Launch][Launch Configuration 2][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00D\x00M\x00A\x00P\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00d\x00m\x00a\x00p)
+Dependency Action=Build
+EnvironmentGroup=default
+Executable=file:///home/shaoan/projects/front_3DMAP/
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=front_3DMAP,vizopimizedpointcloud
+Use External Terminal=false
+Working Directory=
+isExecutable=false
+
+[Project]
+VersionControlSupport=kdevgit
