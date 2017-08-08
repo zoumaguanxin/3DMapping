@@ -62,7 +62,7 @@ istream& operator>>(istream& in, Eigen::Vector3f &s)
 	double rpos[3],rposTheta[3];//用来存放pose
 	if(is.good())
 	{
-		if(mode="3d")
+		if(mode=="3d")
 		{
 		for(unsigned int i=0;i<3;is>>rpos[i++]);
 		for(unsigned int i=0;i<3;is>>rposTheta[i++]);
