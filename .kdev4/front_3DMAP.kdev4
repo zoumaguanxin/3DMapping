@@ -15,7 +15,7 @@ Extra Arguments=
 Install Directory=file:///usr/local
 
 [Launch]
-Launch Configurations=Launch Configuration 0,Launch Configuration 1,Launch Configuration 2
+Launch Configurations=Launch Configuration 0,Launch Configuration 1,Launch Configuration 2,Launch Configuration 3
 
 [Launch][Launch Configuration 0]
 Configured Launch Modes=execute
@@ -67,6 +67,24 @@ EnvironmentGroup=default
 Executable=file:///home/shaoan/projects/front_3DMAP/
 External Terminal=konsole --noclose --workdir %workdir -e %exe
 Project Target=front_3DMAP,vizopimizedpointcloud
+Use External Terminal=false
+Working Directory=
+isExecutable=false
+
+[Launch][Launch Configuration 3]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=front_3dmap
+Type=Native Application
+
+[Launch][Launch Configuration 3][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00D\x00M\x00A\x00P\x00\x00\x00\x16\x00f\x00r\x00o\x00n\x00t\x00_\x003\x00d\x00m\x00a\x00p)
+Dependency Action=Build
+EnvironmentGroup=default
+Executable=file:///home/shaoan/projects/front_3DMAP/
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=front_3DMAP,front_3dmap
 Use External Terminal=false
 Working Directory=
 isExecutable=false

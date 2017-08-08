@@ -34,7 +34,7 @@ ostream& operator<<(ostream& out, const Eigen::Vector3f & s)
 int main(int argc, char**argv)
 {
   string dir="/home/shaoan/projects/SLAM6D/dat_et4/";
-  const int maxnumFile=40;
+  const int maxnumFile=15;
   vector<Eigen::Vector3f> historyTrans;
   vector<Eigen::Matrix3f> historyRotations;
 
@@ -62,7 +62,7 @@ int main(int argc, char**argv)
     
     //if number of file bigger than 1, examine whether a edge can be detected from history trace. 
     vector<int> indexes;
-     map3d::backend::Loop loop(500);  
+     map3d::backend::Loop loop(300);  
     if(nfile>0)
     {
       if(loop.flagLoop(historyTrans,t_current))

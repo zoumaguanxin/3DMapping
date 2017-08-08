@@ -15,8 +15,8 @@ int main(int argc, char **argv) {
   /**
    * \a maxnumFile is the  number of reading files.
    */
-  const int maxnumFile=2;
-  int strat_num=23;
+  const int maxnumFile=15;
+  int strat_num=0;
   
    pcl::PointCloud<pcl::PointXYZ>::Ptr global_cloud_ptr(new pcl::PointCloud<pcl::PointXYZ>);
    
@@ -37,7 +37,8 @@ int main(int argc, char **argv) {
       * \a t_odometry store the translation part of odometry data. 
       * \b t_initial_current represent that transform the current frame to initial frame. means that R_current=R_initial*R_initial_current.
       * \c t_current is represented in global frame, that can transform point cloud into global frame. The complete label should be R_global_current. 
-      * But for simplication, we don't include "global" label. All labels that has only one sublabel represent R_global_SUBLABEL.      * 
+      * But for simplication, we don't include "global" label. All labels that has only one sublabel represent R_global_SUBLABEL. 
+      * It is the translation from "global" frame to "sublabel" frame. It also is represented as origin of source frame in target frame.
       */
      Eigen::Vector3f t_odometry, t_initial_current, t_current, t_last_odom;   
      int readnum=strat_num+numFile;
@@ -60,10 +61,8 @@ int main(int argc, char **argv) {
 	    map3d::ICP icp(1000,1010,10,25);
 	    icp.setInputCloud(current_cloud_ptr,global_cloud_ptr);
 	    icp.setParamsConvergence();
-	    //residulal term of our opitimization equation is yi-（Rpj+t), so the R_initial_current,t_initial_current are compubted as following
-	    // R_initial_current=R_initial.transpose()*R_odometry;
-	    //t_initial_current=t_initial-t_odometry;
-	    //use predict unless once registering occured 
+	    
+	    //判断是否启用预测，如果有，则用之前配准的位置纠正上一个时刻里成绩数据，并整合控制命令，否则直接使用里成绩数据。
 	    if(PREDICT_ENABLE&&(numFile>1))
 	    {
 	      /**
@@ -86,8 +85,6 @@ int main(int argc, char **argv) {
 	    t_current=t_odometry;
 	    }
 	    icp.solve(R_current,t_current);
-	    //R_current=R_initial*R_initial_current;
-	    //t_current=t_initial+t_initial_current;
 	    if(icp.flag==false)
 	    {
 	      cout<<readnum<<"failed to register ";

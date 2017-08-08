@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
    
   char dir[100]="/home/shaoan/projects/SLAM6D/dat_et4/";
   char posedir[100]="/home/shaoan/projects/pose_estimate_3d/data/";
-  const int maxnumFile=40;
+  const int maxnumFile=15;
   int strat_num=0;
   vector<map3d::pose> pose_optimized;  
    pcl::PointCloud<pcl::PointXYZ>::Ptr global_cloud_ptr(new pcl::PointCloud<pcl::PointXYZ>);

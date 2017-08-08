@@ -53,6 +53,7 @@ istream& operator>>(istream& in, Eigen::Vector3f &s)
       void readfile(const char * dir, const int nfile,pcl::PointCloud<pcl::PointXYZ>::Ptr cloudPtr, Eigen::Matrix3f &R_odometry, Eigen::Vector3f &t_odometry)
       {
 	char poseFileName[50],pointFileName[50];
+	string mode="3d";
 	//sprintf是把后面格式的文字输出到缓存，这里poseFileName是缓存的地址,.3d表示了
 	sprintf(poseFileName,"%sscan%.3d.pose",dir,nfile);
 	sprintf(pointFileName,"%sscan%.3d.3d",dir,nfile);
@@ -61,9 +62,42 @@ istream& operator>>(istream& in, Eigen::Vector3f &s)
 	double rpos[3],rposTheta[3];//用来存放pose
 	if(is.good())
 	{
-	  for(unsigned int i=0;i<3;is>>rpos[i++]);
-	  for(unsigned int i=0;i<3;is>>rposTheta[i++]);	
-	}
+		if(mode="3d")
+		{
+		for(unsigned int i=0;i<3;is>>rpos[i++]);
+		for(unsigned int i=0;i<3;is>>rposTheta[i++]);
+		}
+		else
+		{
+			//***********************************
+			//由于是在平面上，且在左手坐标系下，只有pith角度保留，且，y方向上平移设置为0
+			//************************************
+			for(unsigned int i=0;i<3;i++)
+			{
+			  if(i==1)
+			  {
+			    is>>rpos[i];
+			    rpos[i]=0;
+			  }
+			  else{
+			    is>>rpos[i];
+			  }
+			}
+			
+			for(unsigned int i=0;i<3;i++)
+			{
+			if(i!=1)
+			{
+			  is>>rposTheta[i]; 
+			}
+			else
+			{
+			  is>>rposTheta[i];
+			  rposTheta[i]=0;
+			}
+			}	
+		      }
+	       }
 	else{cout<<"ERROR: Cannot open file 'scan000.pose'."<<endl;}
 	is.close();
 	//显示读取的结果
